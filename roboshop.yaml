@@ -1,6 +1,6 @@
 ---
 - name: Deploy instances for Roboshop Project
-  host: local
+  host: all
   connection: local
   vars:
     ami_id: "ami-0220d79f3f480ecf5"
