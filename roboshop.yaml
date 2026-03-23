@@ -24,11 +24,11 @@
         Project: "Roboshop"
         Component: "{{ item }}"
     loop: "{{ instances }}"
-    when: action == create
+    when: action == "create"
 
   - name: Deploy Instance for each Component
     amazon.aws.ec2_instance:
       name: "{{ item }}-{{ env }}"
       state: absent
     loop: "{{ instances }}"
-    when: action == delete
+    when: action == "delete"
