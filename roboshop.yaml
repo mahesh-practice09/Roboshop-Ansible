@@ -19,7 +19,7 @@
       network_interfaces:
       - assign_public_ip: true
       tags:
-        Name: "{{ instances }}-{{ env }}"
+        Name: "{{ item }}-{{ env }}"
         Project: "Roboshop"
-        Component: "{{ Instances }}"
+        Component: "{{ item }}"
     loop: "{{ instances }}"
