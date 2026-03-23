@@ -9,6 +9,7 @@
     env: dev
     instances:
     - mongodb
+    - catalogue
   tasks:
   - name: Deploy Instance for each Component
     amazon.aws.ec2_instance:
