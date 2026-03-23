@@ -16,8 +16,6 @@
       image_id: ami_id
       security_group: sg_id
       vpc_subnet_id: "subnet-06a0137ee419d9703"
-      network_interfaces:
-      - assign_public_ip: true
       tags:
         Name: "{{ item }}-{{ env }}"
         Project: "Roboshop"
