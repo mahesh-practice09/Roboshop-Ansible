@@ -7,6 +7,7 @@
     sg_id: "sg-0950784120973742b"
     subnet_id: "subnet-06a0137ee419d9703"
     env: dev
+    action: create
     instances:
     - mongodb
     - catalogue
@@ -23,3 +24,11 @@
         Project: "Roboshop"
         Component: "{{ item }}"
     loop: "{{ instances }}"
+    when: action == create
+
+  - name: Deploy Instance for each Component
+    amazon.aws.ec2_instance:
+      name: "{{ item }}-{{ env }}"
+      state: absent
+    loop: "{{ instances }}"
+    when: action == delete
