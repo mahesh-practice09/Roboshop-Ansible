@@ -29,8 +29,6 @@
   - name: Delete Instance for each Component
     amazon.aws.ec2_instance:
       state: absent
-      name: "{{ item }}-{{ env }}"
-      filters:
-        "tags:Name": "{{ item }}-{{ env }}"
+      Name: "{{ item }}-{{ env }}"
     loop: "{{ instances }}"
     when: action == "delete"
