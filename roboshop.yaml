@@ -41,7 +41,6 @@
       type: A
       ttl: 2
       value: "{{ item.Instances[0].private_ip_address }}"
-      wait: true
     loop: "{{ Instances }}"
 
   - name: Delete Instance for each Component
