@@ -32,7 +32,7 @@
     ansible.builtin.debug:
       msg: "{{ ec2_output.results }}"
 
-  - name: Create record for the Component
+  - name: Create record for the Components
     amazon.aws.route53:
       state: present
       zone: "{{ domain_name }}"
@@ -46,10 +46,11 @@
     loop: "{{ ec2_output.results }}"
     when: action == "create"
 
-  - name: Delete record for the Component
+  - name: Delete record for the Components
     amazon.aws.route53:
       state: absent
       zone: "{{ domain_name }}"
+      type: A
       #Example: catalogue-dev.daws88s.shop
       record: "{{ item }}-{{ env }}.{{ domain_name }}"
       wait: false
