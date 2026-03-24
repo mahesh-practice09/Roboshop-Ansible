@@ -40,7 +40,7 @@
       record: "{{ item }}-{{ domain_name }}"
       type: A
       ttl: 2
-      value: "{{ item.instances[0].private_ip_address }}"
+      value: item.instances[0].private_ip_address
     loop: "{{ Instances }}"
 
   - name: Delete Instance for each Component
