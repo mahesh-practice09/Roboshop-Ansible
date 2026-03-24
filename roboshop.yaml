@@ -8,7 +8,8 @@
     subnet_id: "subnet-06a0137ee419d9703"
     env: dev
     action: create
-    instances:
+    domain_name: daws88s.shop
+    Instances:
     - mongodb
     - catalogue
   tasks:
@@ -23,8 +24,25 @@
         Name: "{{ item }}-{{ env }}"
         Project: "Roboshop"
         Component: "{{ item }}"
-    loop: "{{ instances }}"
+    loop: "{{ Instances }}"
     when: action == "create"
+    register: ec2_output
+
+  - name: Get ec2 output
+    ansible.builtin.debug:
+      msg: "{{ ec2_output }}"
+
+  # - name: Create record for the Component
+  #   amazon.aws.route53:
+  #     state: present
+  #     zone: "{{ domain_name }}"
+  #     #Example: catalogue-daws88s.shop
+  #     record: "{{ item }}-{{ domain_name }}"
+  #     type: A
+  #     ttl: 2
+  #     value: 1.1.1.1,2.2.2.2,3.3.3.3
+  #     wait: true
+  #   loop: "{{ Instances }}"
 
   - name: Delete Instance for each Component
     amazon.aws.ec2_instance:
