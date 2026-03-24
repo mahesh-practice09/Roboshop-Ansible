@@ -77,6 +77,17 @@
     loop: "{{ Instances }}"
     when: action == "delete"
 
+  - name: Delete record for the Roboshop
+    amazon.aws.route53:
+      state: absent
+      zone: "{{ domain_name }}"
+      type: A
+      #Example: roboshop-dev.daws88s.shop
+      record: "{{ Project }}-{{ env }}.{{ domain_name }}"
+      wait: false
+    loop: "{{ Instances }}"
+    when: action == "delete"
+
   - name: Delete Instance for each Component
     amazon.aws.ec2_instance:
       state: absent
