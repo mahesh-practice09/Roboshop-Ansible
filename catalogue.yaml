@@ -33,3 +33,15 @@
     community.general.npm:
       path: /app
       state: present
+  - name: Copy Catalog Service file
+    ansible.builtin.copy:
+      src: Catalogue.service
+      dest: /etc/systemd/system/
+  - name: Reload systemd daemon
+    ansible.builtin.systemd_service:
+      daemon_reload: true
+  - name: Enable and Start Catalogue Service
+    ansible.builtin.service:
+      name: Catalogue
+      enabled: true
+      state: started
