@@ -40,7 +40,7 @@
       record: "{{ item }}-{{ domain_name }}"
       type: A
       ttl: 2
-      value: " {{ item.instances[0].private_ip_address }}"
+      value: "{{ item.Instances[0].private_ip_address }}"
       wait: true
     loop: "{{ Instances }}"
 
@@ -50,5 +50,5 @@
       name: "{{ item }}-{{ env }}"
       filters:
         "tag:Name": "{{ item }}-{{ env }}"
-    loop: "{{ instances }}"
+    loop: "{{ Instances }}"
     when: action == "delete"
