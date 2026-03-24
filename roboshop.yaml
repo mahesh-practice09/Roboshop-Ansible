@@ -46,14 +46,14 @@
     loop: "{{ ec2_output.results }}"
     when: action == "create"
 
-  - name: Create record for the Component
+  - name: Delete record for the Component
     amazon.aws.route53:
       state: absent
       zone: "{{ domain_name }}"
       #Example: catalogue-dev.daws88s.shop
-      record: "{{ item.item }}-{{ env }}.{{ domain_name }}"
+      record: "{{ item }}-{{ env }}.{{ domain_name }}"
       wait: false
-    loop: "{{ ec2_output.results }}"
+    loop: "{{ Instances }}"
     when: action == "delete"
 
   - name: Delete Instance for each Component
