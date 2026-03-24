@@ -1,0 +1,6 @@
+---
+- name: Install mongodb
+  hosts: mongodb
+  connection: local
+  tasks:
+  - name:
