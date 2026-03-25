@@ -17,6 +17,8 @@
     - redis
     - user
     - cart
+    - mysql
+    - rabbitmq
     - shipping
     - payment
   tasks:
