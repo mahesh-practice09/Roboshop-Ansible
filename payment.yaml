@@ -38,6 +38,7 @@
     ansible.builtin.unarchive:
       src: /tmp/payment.zip
       dest: /app
+      remote_src: yes
   - name: Install required dependencies using requirements.txt
     ansible.builtin.pip:
       name: requirements.txt
