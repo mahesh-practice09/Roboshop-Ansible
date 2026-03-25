@@ -1,6 +1,7 @@
 ---
 - name: Install Rabbitmq
   hosts: rabbitmq
+  become: true
   tasks:
   - name: copy rabbitmq.repo
     ansible.builtin.copy:
