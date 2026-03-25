@@ -25,3 +25,9 @@
     ansible.builtin.unarchive:
       src: /tmp/frontend.zip
       dest: /usr/share/nginx/html
+      remote_src: yes
+
+  - name: copy nginx.conf file
+    ansible.builtin.template:
+      src: nginx.conf
+      dest: /etc/nginx/
