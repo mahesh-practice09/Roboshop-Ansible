@@ -1,6 +1,7 @@
 ---
 - name: Install Shipping
-  hosts: Shipping
+  hosts: shipping
+  become: true
   tasks:
   - name: Install maven
     ansible.builtin.package:
