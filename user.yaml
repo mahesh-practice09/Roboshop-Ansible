@@ -1,7 +1,6 @@
 ---
-- name: Install Catalogue
-  hosts: catalogue
-  become: true
+- name: Install User
+  hosts: user
   tasks:
   - name: Enable module nodejs
     ansible.builtin.shell: dnf module enable nodejs:20 -y
@@ -24,40 +23,31 @@
     ansible.builtin.file:
       path: /app
       state: directory
-  - name: Delete downloaded catalogue zip file
+  - name: Delete downloaded user zip file
     ansible.builtin.file:
-      path: /tmp/catalogue.zip
+      path: /tmp/user.zip
       state: absent
-  - name: Download package from url
+  - name: Download user package from url
     ansible.builtin.get_url:
-      url: https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip
-      dest: /tmp/catalogue.zip
-  - name: Unarchive the catalogue zip folder
+      url: https://roboshop-artifacts.s3.amazonaws.com/user-v3.zip
+      dest: /tmp/user.zip
+  - name: Unarchive the user zip folder
     ansible.builtin.unarchive:
-      src: /tmp/catalogue.zip
+      src: /tmp/user.zip
       dest: /app
-      remote_src: yes
   - name: npm download dependencies
     community.general.npm:
       path: /app
       state: present
-  - name: Copy Catalog Service file
+  - name: Copy user Service file
     ansible.builtin.template:
-      src: catalogue.service
+      src: user.service
       dest: /etc/systemd/system/
   - name: Reload systemd daemon
     ansible.builtin.systemd_service:
       daemon_reload: true
-  - name: Enable and Start Catalogue Service
+  - name: Enable and Start user Service
     ansible.builtin.service:
-      name: Catalogue
+      name: user
       enabled: true
-      state: started
-  - name: Copy MongoDB repo file
-    ansible.builtin.copy:
-      src: mongo.repo
-      dest: /etc/yum.repos.d/
-  - name: Install MongoDB-client
-    ansible.builtin.package:
-      name: mongodb-mongosh
       state: started
