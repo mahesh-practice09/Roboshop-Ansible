@@ -10,6 +10,9 @@
     loop:
     - maven
     - mysql
+  - name: PiP install PyMySQL
+    ansible.builtin.pip:
+      name: PyMySQL
   - name: Add user roboshop
     ansible.builtin.user:
       name: roboshop
