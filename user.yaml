@@ -1,6 +1,7 @@
 ---
 - name: Install User
   hosts: user
+  become: true
   tasks:
   - name: Enable module nodejs
     ansible.builtin.shell: dnf module enable nodejs:20 -y
