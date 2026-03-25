@@ -29,3 +29,8 @@
     ansible.builtin.template:
       src: nginx.conf
       dest: /etc/nginx/
+
+  - name: Restart nginx
+    ansible.builtin.service:
+      name: nginx
+      state: restarted

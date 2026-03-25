@@ -13,14 +13,6 @@
     Instances:
     - mongodb
     - catalogue
-    - frontend
-    - redis
-    - user
-    - cart
-    - mysql
-    - rabbitmq
-    - shipping
-    - payment
   tasks:
   - name: Install botocore and boto3 for connectivity with aws console
     ansible.builtin.pip:
