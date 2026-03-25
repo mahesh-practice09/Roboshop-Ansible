@@ -12,9 +12,7 @@
       state: present
 
   - name: Remove the default content from the webserver
-    ansible.builtin.file:
-      path: /usr/share/nginx/html/
-      state: absent
+    ansible.builtin.command: rm -rf /usr/share/nginx/html/*
 
   - name: Download the frontend content
     ansible.builtin.get_url:
