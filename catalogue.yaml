@@ -6,7 +6,7 @@
   - name: Enable module nodejs
     ansible.builtin.shell: dnf module enable nodejs:20 -y
   - name: Install nodejs:20
-    ansible.builtin.package:
+    ansible.builtin.dnf:
       name: nodejs
       state: present
   - name: Add user roboshop
@@ -67,4 +67,4 @@
 
   - name: debug catalogue output
     ansible.builtin.debug:
-      msg: "{{ catalogue_output.result }}"
+      msg: "{{ catalogue_output }}"
