@@ -17,7 +17,7 @@
   tasks:
   - name: Install botocore and boto3 for connectivity with aws console
     ansible.builtin.pip:
-    - name: "{{ item }}"
+      name: "{{ item }}"
     loop:
     - botocore
     - boto3
