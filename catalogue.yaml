@@ -60,7 +60,7 @@
   - name: Install MongoDB-client
     ansible.builtin.package:
       name: mongodb-mongosh
-      state: started
+      state: present
   - name: check databases index
     ansible.builtin.command: mongosh --host {{ MONGODB_HOST }} --quiet  --eval 'db.getMongo().getDBNames().indexOf("catalogue")'
     register: catalogue_output
