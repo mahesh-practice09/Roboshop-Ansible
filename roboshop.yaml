@@ -14,6 +14,9 @@
     - mongodb
     - catalogue
     - frontend
+    - redis
+    - user
+    - cart
   tasks:
   - name: Install botocore and boto3 for connectivity with aws console
     ansible.builtin.pip:
