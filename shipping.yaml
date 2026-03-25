@@ -13,6 +13,7 @@
   - name: PiP install PyMySQL
     ansible.builtin.pip:
       name: "{{ item }}"
+      executable: pip3.9
     loop:
     - PyMySQL
     - cryptography
@@ -68,6 +69,11 @@
     - /app/db/schema.sql
     - /app/db/app-user.sql
     - /app/db/master-data.sql
+
+  - name: Copy shipping service
+    ansible.builtin.template:
+      src: shipping.service
+      dest: /etc/systemd/system/
 
   - name: Enable and Start shipping Service
     ansible.builtin.service:
