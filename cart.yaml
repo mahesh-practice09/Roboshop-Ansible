@@ -17,21 +17,21 @@
       comment: "roboshop system user"
   - name: Delete Directory /app
     ansible.builtin.file:
-    path: /app
-    state: absent
+      path: /app
+      state: absent
   - name: Create directory /app
     ansible.builtin.file:
       path: /app
-    state: directory
+      state: directory
   - name: Delete downloaded cart zip file
     ansible.builtin.file:
-    path: /tmp/cart.zip
-    state: absent
+      path: /tmp/cart.zip
+      state: absent
   - name: Download package from url
     ansible.builtin.get_url:
-    url: https://roboshop-artifacts.s3.amazonaws.com/cart-v3.zip
-    dest: /tmp/cart.zip
-  - name: Unarchive the catalogue zip folder
+      url: https://roboshop-artifacts.s3.amazonaws.com/cart-v3.zip
+      dest: /tmp/cart.zip
+  - name: Unarchive the cart zip folder
     ansible.builtin.unarchive:
       src: /tmp/cart.zip
       dest: /app
@@ -39,15 +39,15 @@
     community.general.npm:
       path: /app
       state: present
-  - name: Copy Catalog Service file
+  - name: Copy Cart Service file
     ansible.builtin.template:
-      src: catalogue.service
+      src: cart.service
       dest: /etc/systemd/system/
   - name: Reload systemd daemon
     ansible.builtin.systemd_service:
       daemon_reload: true
-  - name: Enable and Start Catalogue Service
+  - name: Enable and Start cart Service
     ansible.builtin.service:
-      name: Catalogue
+      name: cart
       enabled: true
       state: started
