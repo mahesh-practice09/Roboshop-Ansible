@@ -1,6 +1,7 @@
 ---
 - name: Install frontend
   hosts: frontend
+  become: root
   tasks:
   - name: enable nginx module
     ansible.builtin.command: dnf module enable nginx:1.24 -y
