@@ -1,6 +1,7 @@
 ---
 - name: Install Payment
   hosts: payment
+  become: true
   tasks:
   - name: Install Python gcc python3-devel
     ansible.builtin.package:
