@@ -10,7 +10,6 @@
     ansible.builtin.package:
       name: nginx
       state: present
-      enabled: true
 
   - name: Remove the default content from the webserver
     ansible.builtin.file:
