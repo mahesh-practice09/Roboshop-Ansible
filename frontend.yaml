@@ -9,7 +9,7 @@
   - name: Install nginx
     ansible.builtin.package:
       name: nginx
-      state: started
+      state: present
       enabled: true
 
   - name: Remove the default content from the webserver
