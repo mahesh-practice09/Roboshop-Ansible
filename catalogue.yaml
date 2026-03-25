@@ -68,3 +68,7 @@
   - name: debug catalogue output
     ansible.builtin.debug:
       msg: "{{ catalogue_output }}"
+
+  - name: Add Master Data in monogdb
+    ansible.builtin.shell: mongosh --host "{{ MONGODB_HOST }}" </app/db/master-data.js
+    when: catalogue_output.stdout > 0
