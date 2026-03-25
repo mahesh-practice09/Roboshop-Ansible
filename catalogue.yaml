@@ -50,7 +50,7 @@
       daemon_reload: true
   - name: Enable and Start Catalogue Service
     ansible.builtin.service:
-      name: Catalogue
+      name: catalogue
       enabled: true
       state: started
   - name: Copy MongoDB repo file
