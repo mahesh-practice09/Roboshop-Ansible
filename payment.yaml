@@ -34,6 +34,10 @@
     ansible.builtin.get_url:
       url: https://roboshop-artifacts.s3.amazonaws.com/payment-v3.zip
       dest: /tmp/payment.zip
+  - name: Unarchive payment.zip
+    ansible.builtin.unarchive:
+      src: /tmp/payment.zip
+      dest: /app
   - name: Install required dependencies using requirements.txt
     ansible.builtin.pip:
       name: requirements.txt
