@@ -9,8 +9,7 @@
   - name: Install nginx
     ansible.builtin.package:
       name: nginx
-      state:
-
+      state: present
 
   - name: Remove the default content from the webserver
     ansible.builtin.command: rm -rf /usr/share/nginx/html/*
