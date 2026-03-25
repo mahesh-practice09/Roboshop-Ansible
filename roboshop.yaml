@@ -15,6 +15,12 @@
     - catalogue
     - frontend
   tasks:
+  - name: Install botocore and boto3 for connectivity with aws console
+    ansible.builtin.pip:
+    - name: "{{ item }}"
+    loop:
+    - botocore
+    - boto3
   - name: Deploy Instance for each Component
     amazon.aws.ec2_instance:
       name: "{{ item }}-{{ env }}"
