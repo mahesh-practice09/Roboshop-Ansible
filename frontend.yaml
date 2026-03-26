@@ -11,8 +11,15 @@
       name: nginx
       state: present
 
-  - name: Remove the default content from the webserver
-    ansible.builtin.command: rm -rf /usr/share/nginx/html/*
+  - name: Remove the default html directory
+    ansible.builtin.file:
+      path: /usr/share/nginx/html
+      state: absent
+
+  - name: create html directory
+    ansible.builtin.file:
+      path: /usr/share/nginx/html
+      state: directory
 
   - name: Download the frontend content
     ansible.builtin.get_url:
@@ -24,6 +31,11 @@
       src: /tmp/frontend.zip
       dest: /usr/share/nginx/html
       remote_src: yes
+
+  - name: copy nginx.conf file
+    ansible.builtin.file:
+      path: /etc/nginx/nginx.conf
+      state: absent
 
   - name: copy nginx.conf file
     ansible.builtin.template:
