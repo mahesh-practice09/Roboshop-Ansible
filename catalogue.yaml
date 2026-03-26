@@ -52,7 +52,7 @@
     ansible.builtin.service:
       name: catalogue
       enabled: true
-      state: started
+      state: restarted
   - name: Copy MongoDB repo file
     ansible.builtin.copy:
       src: mongo.repo
