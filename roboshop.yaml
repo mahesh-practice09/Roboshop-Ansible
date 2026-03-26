@@ -1,3 +1,4 @@
+#ansible-playbook -i localhost, -e "Instances=['mongodb','redis','mysql','rabbitmq','catalogue','user','cart','payment','shipping','frontend']" roboshop.yaml
 ---
 - name: Deploy instances for Roboshop Project
   hosts: all
